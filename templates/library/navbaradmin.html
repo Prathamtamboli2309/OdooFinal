@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Library Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<nav class="bg-gray-800 text-white fixed w-full z-10 shadow-md">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-3 md:py-4">
+      <a href="/" class="navbar-brand text-xl font-semibold">Library Management</a>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white focus:outline-none" id="navbarToggle">
+        <span class="text-xl">☰</span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="hidden md:flex md:space-x-4 items-center" id="navbarCollapse">
+        <a href="addbook" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Add Book</a>
+        <a href="viewbook" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">View Books</a>
+        <a href="issuebook" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Issue Book</a>
+        <a href="viewissuedbook" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Issued Books</a>
+        <a href="viewstudent" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">View Students</a>
+        <a href="/" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Home</a>
+        <a href="logout" class="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Links -->
+  <div class="md:hidden bg-gray-800 text-white space-y-4 p-4 hidden" id="mobileMenu">
+    <a href="addbook" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Add Book</a>
+    <a href="viewbook" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">View Books</a>
+    <a href="issuebook" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Issue Book</a>
+    <a href="viewissuedbook" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Issued Books</a>
+    <a href="viewstudent" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">View Students</a>
+    <a href="/" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Home</a>
+    <a href="logout" class="block py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Logout</a>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('navbarToggle').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>

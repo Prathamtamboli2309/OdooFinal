@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Issued Books to Students</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    {% include "library/navbaradmin.html" %}
+
+    <div class="container mx-auto px-4 py-8">
+        <h3 class="text-2xl font-bold mt-8 text-center text-white bg-blue-600 py-3 rounded-md mb-6">
+            Issued Books to Students
+        </h3>
+
+        {% if li %}
+            <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-red-600 text-white">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Student Name</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Student Enrollment</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Book Name</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Book Author</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Issue Date</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Expiry Date</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium">Fine</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for t in li %}
+                            <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-100{% endif %}">
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.0 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.1 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.2 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.3 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.4 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.5 }}</td>
+                                <td class="px-4 py-2 text-sm text-gray-900">{{ t.6 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7" class="px-4 py-2 text-right text-sm text-gray-700">
+                                <div class="links"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        {% else %}
+            <h1 class="text-center text-xl text-red-600 mt-6">No books issued.</h1>
+        {% endif %}
+    </div>
+
+    <!-- {% include "library/footer.html" %} -->
+</body>
+</html>

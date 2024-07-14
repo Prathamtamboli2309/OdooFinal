@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Available Books - Library Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    {% include "library/navbaradmin.html" %}
+    
+    <!-- <h3 class="p-5 mb-4 text-4xl text-white bg-blue-600 text-center">Available Books in Library!</h3> -->
+
+    <main class="flex-grow p-6 mt-16">
+        <div class="overflow-x-auto">
+            {% if books %}
+            <table class="min-w-full bg-white border  mt-10border-gray-200 rounded-lg shadow-lg">
+                <thead class="bg-red-600 text-white">
+                    <tr>
+                        <th class="py-3 px-4 text-left">Book Name</th>
+                        <th class="py-3 px-4 text-left">ISBN</th>
+                        <th class="py-3 px-4 text-left">Author</th>
+                        <th class="py-3 px-4 text-left">Category</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for book in books %}
+                    <tr class="{% cycle 'bg-gray-100' 'bg-white' %}">
+                        <td class="py-3 px-4">{{ book.name }}</td>
+                        <td class="py-3 px-4">{{ book.isbn }}</td>
+                        <td class="py-3 px-4">{{ book.author }}</td>
+                        <td class="py-3 px-4">{{ book.category }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="bg-red-600 text-white">
+                    <tr>
+                        <td colspan="4" class="py-3 px-4 text-right">
+                            <div class="links">
+                                <!-- Add any footer links here -->
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            {% else %}
+            <h1 class="text-center text-2xl text-gray-700">No books available</h1>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- {% include "library/footer.html" %} -->
+</body>
+</html>

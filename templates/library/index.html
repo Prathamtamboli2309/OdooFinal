@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Library Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/alpine@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    {% include "library/navbar.html" %}
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="relative" x-data="{ slide: 0 }">
+        <div class="overflow-hidden relative">
+            <div class="flex transition-transform duration-500 ease-in-out" :style="'transform: translateX(-' + (slide * 100) + '%);'">
+                <div class="flex-shrink-0 w-full h-64 sm:h-80 lg:h-96">
+                    <img class="w-full h-full object-cover" src="{% static 'images/lib1.png' %}" alt="First slide">
+                </div>
+                <div class="flex-shrink-0 w-full h-64 sm:h-80 lg:h-96">
+                    <img class="w-full h-full object-cover" src="{% static 'images/lib2.jpg' %}" alt="Second slide">
+                </div>
+                <div class="flex-shrink-0 w-full h-64 sm:h-80 lg:h-96">
+                    <img class="w-full h-full object-cover" src="{% static 'images/lib3.webp' %}" alt="Third slide">
+                </div>
+            </div>
+            <button @click="slide = (slide > 0 ? slide - 1 : 2)" class="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 py-2 bg-gray-800 text-white rounded-full">
+                &#9664;
+            </button>
+            <button @click="slide = (slide < 2 ? slide + 1 : 0)" class="absolute top-1/2 right-0 transform -translate-y-1/2 px-4 py-2 bg-gray-800 text-white rounded-full">
+                &#9654;
+            </button>
+            <ol class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 pb-4">
+                <li :class="{'bg-white': slide === 0, 'bg-gray-500': slide !== 0}" class="w-3 h-3 rounded-full cursor-pointer" @click="slide = 0"></li>
+                <li :class="{'bg-white': slide === 1, 'bg-gray-500': slide !== 1}" class="w-3 h-3 rounded-full cursor-pointer" @click="slide = 1"></li>
+                <li :class="{'bg-white': slide === 2, 'bg-gray-500': slide !== 2}" class="w-3 h-3 rounded-full cursor-pointer" @click="slide = 2"></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="py-12 px-4 mx-auto max-w-7xl">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-6">
+            Hello, Reader!
+        </h1>
+        <p class="text-base md:text-lg text-center text-gray-600 mb-6">
+            A service dedicated to Admin and Student. We provide online resources, professional support and guidance to all our students whenever, and from wherever they have chosen to study.
+        </p>
+        <hr class="my-6 border-gray-300">
+
+        <div class="flex flex-col md:flex-row justify-center gap-6 mb-6">
+            <div class="flex-1 flex flex-col items-center text-center bg-white shadow-md rounded-lg p-6">
+                <img src="{% static 'images/Admin-icon.png' %}" class="w-24 h-24 object-contain mb-4" alt="Admin Icon">
+                <a class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" href="/adminclick">Admin</a>
+            </div>
+            <div class="flex-1 flex flex-col items-center text-center bg-white shadow-md rounded-lg p-6">
+                <img src="{% static 'images/student.png' %}" class="w-24 h-24 object-contain mb-4" alt="Student Icon">
+                <a class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" href="/studentclick">Student</a>
+            </div>
+        </div>
+
+        <hr class="my-6 border-gray-300">
+    </div>
+
+    <!-- {% include "library/footer.html" %} -->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Issue Book to Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-200 to-purple-300 flex flex-col min-h-screen">
+    {% include "library/navbaradmin.html" %}
+    
+    <div class="flex-grow p-6 mt-5">
+        <!-- <h3 class="text-center text-2xl font-semibold text-green-600 mb-6 mt-5">ISSUE BOOK TO STUDENT!</h3> -->
+
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 mt-10">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Issue Book to Student</h2>
+
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                    {{ field }}
+				</div>
+                {% endfor %}
+
+                <div class="text-center">
+                    <button type="submit" class="w-full py-3 px-5 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out">
+                        ISSUE
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center text-gray-600">
+                View issued book to student? <a href="viewissuedbook" class="text-blue-600 hover:underline">Click here</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

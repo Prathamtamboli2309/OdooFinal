@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Books Issued</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    {% include "library/navbarstudent.html" %}
+
+    <!-- <h3 class="p-5 mb-4 text-4xl text-white bg-blue-600 text-center">Books Issued To You!</h3> -->
+
+    <div class="flex flex-col lg:flex-row mx-4 mt-10 space-x-0 lg:space-x-4">
+        <div class="w-full lg:w-1/2 mb-4 lg:mb-0">
+            {% if li1 %}
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <thead class="bg-red-600 text-white">
+                    <tr>
+                        <th class="py-3 px-4 text-left">Name</th>
+                        <th class="py-3 px-4 text-left">Enrollment</th>
+                        <th class="py-3 px-4 text-left">Branch</th>
+                        <th class="py-3 px-4 text-left">Book Name</th>
+                        <th class="py-3 px-4 text-left">Book Author</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for t in li1 %}
+                    <tr class="{% cycle 'bg-gray-100' 'bg-white' %}">
+                        <td class="py-3 px-4">{{ t.0 }}</td>
+                        <td class="py-3 px-4">{{ t.1 }}</td>
+                        <td class="py-3 px-4">{{ t.2 }}</td>
+                        <td class="py-3 px-4">{{ t.3 }}</td>
+                        <td class="py-3 px-4">{{ t.4 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h1 class="text-center text-xl text-gray-700">No books issued to you</h1>
+            {% endif %}
+        </div>
+
+        <div class="w-full lg:w-1/2">
+            {% if li2 %}
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <thead class="bg-red-600 text-white">
+                    <tr>
+                        <th class="py-3 px-4 text-left">Issue Date</th>
+                        <th class="py-3 px-4 text-left">Expiry Date</th>
+                        <th class="py-3 px-4 text-left">Fine</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for t in li2 %}
+                    <tr class="{% cycle 'bg-gray-100' 'bg-white' %}">
+                        <td class="py-3 px-4">{{ t.0 }}</td>
+                        <td class="py-3 px-4">{{ t.1 }}</td>
+                        <td class="py-3 px-4">{{ t.2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h1 class="text-center text-xl text-gray-700">No issues recorded</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    <br>
+    <!-- {% include "library/footer.html" %} -->
+</body>
+</html>

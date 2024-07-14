@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mohammad Burhan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-blue-100 text-gray-800">
+    {% include "library/navbar.html" %}
+
+    <div class="py-8 px-4 mt-24 sm:px-6 lg:px-8 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
+        <h3 class="text-center text-2xl font-semibold text-green-600 mb-4">Signup As Student!</h3>
+        <h2 class="text-center text-3xl font-bold mb-6">Student Signup</h2>
+        
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            {% for field in form1 %}
+            <div class="flex flex-col space-y-2">
+                <label class="text-sm font-medium text-gray-700">{{ field.label_tag }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            {% for field in form2 %}
+            <div class="flex flex-col space-y-2">
+                <label class="text-sm font-medium text-gray-700">{{ field.label_tag }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="w-full py-3 px-6 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-200">Sign Up</button>
+        </form>
+        
+        <div class="text-center mt-4">
+            <p>Already have an account? <a href="studentlogin" class="text-blue-500 hover:underline">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- {% include "library/footer.html" %} -->
+</body>
+</html>
