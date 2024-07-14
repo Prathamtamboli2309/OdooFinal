@@ -27,5 +27,5 @@ Welcome to the Online Library System! This web application allows users to manag
 1. **Clone the Repository**
 
    ```sh
-   git clone https://github.com/your-username/online-library-system.git
-   cd online-library-system
+   git clone https://github.com/your-username/OdooFinal.git
+   cd OdooFinal
